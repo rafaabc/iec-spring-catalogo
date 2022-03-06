@@ -8,4 +8,6 @@ public interface CategoriaService {
     Page<Categoria> findAll(Pageable pageable);
 
     void save(Categoria categoria);
+
+    Categoria findById(Long id);
 }

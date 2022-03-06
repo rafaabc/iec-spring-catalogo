@@ -18,7 +18,7 @@
                 <th:block th:include="mensagemErro"></th:block>
             </div>
 
-            <form th:action="@{categorias/add}" method="post" th:object="${categoria}" class="form">
+            <form th:action="@{/categorias/add}" method="post" th:object="${categoria}" class="form">
                 <input type="hidden" name="id" th:value="${categoria.id}"/>
                 <div class="form-group">
                     <input type="text" class="form-control" name="nome" placeholder="Nome *"

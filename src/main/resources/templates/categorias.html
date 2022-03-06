@@ -21,12 +21,14 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nome</th>
+                <th>Ações</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="categoria : ${categorias}">
                 <th scope="row" th:text="${categoria.id}"></th>
                 <td th:text="${categoria.nome}"></td>
+                <td><a th:href="@{/categoria-form/{id}(id=${categoria.id})}">Editar</a></td>
             </tr>
             </tbody>
         </table>
