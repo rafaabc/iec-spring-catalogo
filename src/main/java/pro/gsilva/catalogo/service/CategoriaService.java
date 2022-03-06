@@ -6,4 +6,6 @@ import pro.gsilva.catalogo.model.Categoria;
 
 public interface CategoriaService {
     Page<Categoria> findAll(Pageable pageable);
+
+    void save(Categoria categoria);
 }
