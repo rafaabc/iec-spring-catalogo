@@ -3,7 +3,6 @@ package pro.gsilva.catalogo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -56,8 +55,8 @@ public class CategoriaController {
     @RequestMapping(value = "categoria-form/{id}", method = RequestMethod.GET)
     public ModelAndView getCategoriaEditForm(@PathVariable("id") Long id) {
         ModelAndView mv = new ModelAndView("categoriaForm");
-        Categoria categoria = categoriaService.findById(id);
-        mv.addObject("categoria", categoria);
+        Optional<Categoria> categoria = categoriaService.findById(id);
+        mv.addObject("categoria", categoria.get());
         return mv;
     }
 
@@ -72,5 +71,15 @@ public class CategoriaController {
         categoriaService.save(categoria);
         ModelAndView mv = new ModelAndView("redirect:/categorias");
         return mv;
+    }
+
+    @GetMapping("/categoria/deletar/{id}")
+    public ModelAndView deleteCategoria(@PathVariable Long id) {
+        Optional<Categoria> categoria = categoriaService.findById(id);
+        if (categoria.isEmpty()) {
+            return new ModelAndView("redirect:/not-found");
+        }
+        categoriaService.deleteById(id);
+        return new ModelAndView("redirect:/categorias");
     }
 }

@@ -1,12 +1,15 @@
 package pro.gsilva.catalogo.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pro.gsilva.catalogo.model.Categoria;
 import pro.gsilva.catalogo.repository.CategoriaRepository;
 import pro.gsilva.catalogo.service.CategoriaService;
+
+import java.util.Optional;
 
 @Service
 public class CategoriaServiceImpl implements CategoriaService {
@@ -24,7 +27,12 @@ public class CategoriaServiceImpl implements CategoriaService {
     }
 
     @Override
-    public Categoria findById(Long id) {
-        return categoriaRepository.findById(id).orElseGet(null);
+    public Optional<Categoria> findById(Long id) {
+        return categoriaRepository.findById(id);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        categoriaRepository.deleteById(id);
     }
 }

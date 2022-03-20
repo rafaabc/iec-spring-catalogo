@@ -28,7 +28,10 @@
             <tr th:each="categoria : ${categorias}">
                 <th scope="row" th:text="${categoria.id}"></th>
                 <td th:text="${categoria.nome}"></td>
-                <td><a th:href="@{/categoria-form/{id}(id=${categoria.id})}">Editar</a></td>
+                <td>
+                    <a th:href="@{/categoria-form/{id}(id=${categoria.id})}">Editar</a>
+                    <a th:href="@{/categoria/deletar/{id}(id=${categoria.id})}">Deletar</a>
+                </td>
             </tr>
             </tbody>
         </table>
