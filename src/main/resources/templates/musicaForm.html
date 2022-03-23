@@ -21,6 +21,16 @@
             <form th:action="@{/addMusica}" method="post" th:object="${musica}" class="form">
                 <input type="hidden" name="id" th:value="${musica.id}"/>
                 <div class="form-group">
+                    <label for="categorias">Categorias</label>
+                    <select id="categorias" name="categoriaId" class="custom-select">
+                        <option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nome}"
+                        th:selected="${musica.categoriaId} == ${categoria.id}">
+                        </option>
+                    </select>
+                    <div class="alert alert-warning" th:if="${#fields.hasErrors('categoriaId')}" th:errors="*{categoriaId"></div>
+
+                </div>
+                <div class="form-group">
                     <input type="text" class="form-control" name="titulo" placeholder="Título *"
                            th:value="${musica.titulo}">
                     <div class="alert alert-warning" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></div>

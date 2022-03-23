@@ -9,6 +9,7 @@ import pro.gsilva.catalogo.model.Categoria;
 import pro.gsilva.catalogo.repository.CategoriaRepository;
 import pro.gsilva.catalogo.service.CategoriaService;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,6 +20,11 @@ public class CategoriaServiceImpl implements CategoriaService {
     @Override
     public Page<Categoria> findAll(Pageable pageable) {
         return categoriaRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Categoria> findAll() {
+        return categoriaRepository.findAll();
     }
 
     @Override

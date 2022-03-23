@@ -11,4 +11,6 @@ public interface CatalogoService {
     void excluir(long id);
 
     List<Musica> findByTitulo(String titulo);
+
+    List<Musica> findByCategoriaId(Long categoriaId);
 }
